@@ -1,13 +1,13 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useState, type FormEvent } from "react";
 import {
   ArrowDown, ArrowRight, ArrowUpRight, BookOpen, Check, ChevronDown,
   ClipboardCheck, GraduationCap, Menu, MessageSquareText, Sparkles,
   Users, Wallet, X,
 } from "lucide-react";
-import RoadmapContent from "@/components/RoadmapContent";
 
 const productAreas = [
   { icon: Users, title: "Student records", detail: "Keep admission details, class placement, and family contacts organised." },
@@ -21,11 +21,11 @@ const productAreas = [
 const faqs = [
   { question: "What is Katalysa?", answer: "Katalysa is a school-management platform being designed to bring student records, fees, academic results, and parent communication into one clearer workspace." },
   { question: "Who is Katalysa for?", answer: "Private schools in Nigeria, including school owners, administrators, teachers, and parents." },
-  { question: "Can I book a demonstration?", answer: "Yes. Use the enquiry form and let us know your school and the areas you would like to see. This page is a prototype, so it prepares the enquiry locally and does not send it." },
-  { question: "Is every feature available now?", answer: "The product is being built in stages. The Upcoming features section shows the capabilities planned for later releases." },
+  { question: "Can I book a demonstration?", answer: "Yes. Share your school details and choose a convenient date and time. This prototype records the request only in the current page; it does not send it to Katalysa." },
+  { question: "What can my school manage with Katalysa?", answer: "The current prototype includes student and teacher records, classes and terms, fees, results and report cards, announcements, parent access, school settings, and subscription details." },
 ];
 
-export default function LandingPage({ onLogin, onDashboard }: { onLogin: () => void; onDashboard?: () => void }) {
+export default function LandingPage({ onLogin, onGetStarted }: { onLogin: () => void; onGetStarted: () => void }) {
   const [menuOpen, setMenuOpen] = useState(false);
   const [submitted, setSubmitted] = useState(false);
 
@@ -40,7 +40,7 @@ export default function LandingPage({ onLogin, onDashboard }: { onLogin: () => v
     <main className="marketing-site">
       <header className="marketing-header">
         <Link className="marketing-brand" href="#home" onClick={closeMenu} aria-label="Katalysa home">
-          <span className="marketing-brand-mark"><Sparkles size={18} /></span>
+          <span className="marketing-brand-mark"><Image src="/katalysa-logo.png" alt="" width={30} height={30} /></span>
           <span>Katalysa<span className="brand-period">.</span></span>
         </Link>
         <button className="marketing-menu-button" aria-label={menuOpen ? "Close navigation" : "Open navigation"} aria-expanded={menuOpen} onClick={() => setMenuOpen(!menuOpen)}>
@@ -49,13 +49,13 @@ export default function LandingPage({ onLogin, onDashboard }: { onLogin: () => v
         <nav className={`marketing-nav${menuOpen ? " marketing-nav-open" : ""}`} aria-label="Main navigation">
           <a href="#features" onClick={closeMenu}>Platform</a>
           <a href="#how-it-works" onClick={closeMenu}>Why Katalysa</a>
-          <a href="#roadmap" onClick={closeMenu}>Upcoming features</a>
           <a href="#faq" onClick={closeMenu}>FAQs</a>
           <a className="marketing-contact-link" href="#contact" onClick={closeMenu}>Contact</a>
         </nav>
         <div className="marketing-header-actions">
-          <button className="marketing-login" onClick={onDashboard ?? onLogin}>{onDashboard ? "Open dashboard" : "Sign in"}</button>
-          <a className="button button-primary marketing-book" href="#contact">Book a demo <ArrowRight size={16} /></a>
+          <button className="marketing-login" onClick={onLogin}>Sign in</button>
+          <a className="button button-outline marketing-book" href="#contact">Book a demo</a>
+          <button className="button button-primary marketing-book" onClick={onGetStarted}>Get started <ArrowRight size={16} /></button>
         </div>
       </header>
 
@@ -65,7 +65,7 @@ export default function LandingPage({ onLogin, onDashboard }: { onLogin: () => v
           <h1>Your school.<br /><span>One clearer system.</span></h1>
           <p>Bring student records, school fees, results, and family updates into one connected workspace, designed around the way Nigerian schools work.</p>
           <div className="marketing-hero-actions">
-            <a className="button button-primary" href="#contact">Bring Katalysa to your school <ArrowRight size={16} /></a>
+            <button className="button button-primary" onClick={onGetStarted}>Get started <ArrowRight size={16} /></button>
             <a className="marketing-text-cta" href="#features">Explore the platform <ArrowDown size={15} /></a>
           </div>
           <div className="marketing-trust-row"><span className="trust-avatars"><i>A</i><i>T</i><i>S</i></span><span>For school teams, teachers, and families</span></div>
@@ -107,18 +107,13 @@ export default function LandingPage({ onLogin, onDashboard }: { onLogin: () => v
         <div className="story-copy"><span className="marketing-eyebrow">DESIGNED FOR REAL SCHOOL DAYS</span><h2>A clearer view of your school, <em>without the extra complexity.</em></h2><p>School teams balance people, paperwork, payments, and communication every day. Katalysa is being built to bring those essential tasks into an organised, connected workflow.</p><ul><li><span><Check size={14}/></span><div><strong>Keep key information connected</strong><small>Make the records your team needs easier to find.</small></div></li><li><span><Check size={14}/></span><div><strong>Simplify everyday administration</strong><small>Spend less time coordinating work across separate tools.</small></div></li><li><span><Check size={14}/></span><div><strong>Help families stay informed</strong><small>Give parents a dedicated place for important school updates.</small></div></li></ul><a className="marketing-inline-link" href="#contact">Let’s talk about your school <ArrowRight size={15}/></a></div>
       </section>
 
-      <section className="marketing-roadmap" id="roadmap">
-        <div className="roadmap-heading"><div><span className="marketing-eyebrow">WHAT WE’RE BUILDING NEXT</span><h2>More support for every<br /><em>part of school life.</em></h2><p>Here is the roadmap shared by the Katalysa team. Planned features are not available in the current prototype.</p></div><span className="roadmap-heading-mark"><Sparkles size={24}/></span></div>
-        <RoadmapContent compact />
-      </section>
-
       <section className="marketing-about" id="about"><div className="about-kicker"><span>01</span> MADE FOR NIGERIAN SCHOOLS</div><h2>A better way forward<br />starts with <em>more clarity.</em></h2><p>Katalysa is for private schools that want a more connected way to manage administration, academic records, and communication with families.</p><a href="#contact" className="button button-light">Let’s get to know your school <ArrowRight size={16}/></a><div className="about-star about-star-a">✦</div><div className="about-star about-star-b">✳</div></section>
 
       <section className="marketing-faq marketing-section" id="faq"><div className="marketing-section-heading"><span className="marketing-eyebrow">GOOD TO KNOW</span><h2>Questions,<br /><em>answered.</em></h2><p>A few things school teams may want to know about Katalysa.</p></div><div className="faq-list">{faqs.map((item) => <details key={item.question}><summary>{item.question}<ChevronDown size={17}/></summary><p>{item.answer}</p></details>)}</div></section>
 
-      <section className="marketing-contact" id="contact"><div className="contact-copy"><span className="marketing-eyebrow">LET’S CONNECT</span><h2>Your school’s next chapter starts with <em>a conversation.</em></h2><p>Tell us a little about your school and what you would like to explore. We would love to learn what your team needs.</p><div className="contact-promise"><span><Sparkles size={17}/></span><div><strong>Schools. Teachers. Families.</strong><small>One more connected experience.</small></div></div></div><form className="contact-form" onSubmit={submitEnquiry}><div className="contact-form-heading"><strong>Book a demo</strong><span>Tell us about your school</span></div><label>Your name<input name="name" autoComplete="name" required placeholder="e.g. Amara Okafor" onChange={() => setSubmitted(false)} /></label><label>School name<input name="school" autoComplete="organization" required placeholder="e.g. Bloomfield Academy" onChange={() => setSubmitted(false)} /></label><label>Work email<input name="email" type="email" autoComplete="email" required placeholder="you@school.com" onChange={() => setSubmitted(false)} /></label><label>Your role<select name="role" defaultValue=""><option value="" disabled>Choose a role</option><option>School owner / proprietor</option><option>School administrator</option><option>Teacher</option><option>Parent</option><option>Other</option></select></label><label>What would you like to see?<textarea name="message" rows={3} placeholder="Tell us what you would like to explore…" onChange={() => setSubmitted(false)} /></label><button className="button button-primary" type="submit">Prepare demo enquiry <ArrowRight size={16}/></button>{submitted ? <p className="contact-form-status" role="status"><Check size={14}/> Your enquiry is ready. This prototype does not send it anywhere.</p> : <small className="contact-form-note">Prototype form · Nothing is sent or stored.</small>}</form></section>
+      <section className="marketing-contact" id="contact"><div className="contact-copy"><span className="marketing-eyebrow">LET’S CONNECT</span><h2>See how Katalysa can fit <em>your school.</em></h2><p>Request a walkthrough of the current student, fee, academic, and parent workflows. Choose a date and time that works for your team.</p><div className="contact-promise"><span><Sparkles size={17}/></span><div><strong>Schools. Teachers. Families.</strong><small>One organised school workspace.</small></div></div></div><form className="contact-form" onSubmit={submitEnquiry}><div className="contact-form-heading"><strong>Book a demo</strong><span>Choose a convenient time</span></div><label>Your name<input name="name" autoComplete="name" required placeholder="e.g. Amara Okafor" onChange={() => setSubmitted(false)} /></label><label>School name<input name="school" autoComplete="organization" required placeholder="e.g. Bloomfield Academy" onChange={() => setSubmitted(false)} /></label><label>Work email<input name="email" type="email" autoComplete="email" required placeholder="you@school.com" onChange={() => setSubmitted(false)} /></label><label>Your role<select name="role" defaultValue="" required onChange={() => setSubmitted(false)}><option value="" disabled>Choose a role</option><option>School owner / proprietor</option><option>School administrator</option><option>Teacher</option><option>Other</option></select></label><label>Preferred date<input name="preferredDate" type="date" required min={new Date().toISOString().slice(0, 10)} onChange={() => setSubmitted(false)} /></label><label>Preferred time<input name="preferredTime" type="time" required onChange={() => setSubmitted(false)} /></label><label className="contact-message-field">Anything you’d like us to focus on?<textarea name="message" rows={3} placeholder="For example, fee tracking or report cards…" onChange={() => setSubmitted(false)} /></label><button className="button button-primary" type="submit">Request a demo <ArrowRight size={16}/></button>{submitted ? <p className="contact-form-status" role="status"><Check size={14}/> Request prepared locally. It has not been sent or booked.</p> : <small className="contact-form-note">Prototype form · Demo requests are not sent or stored.</small>}</form></section>
 
-      <footer className="marketing-footer"><Link className="marketing-brand" href="#home"><span className="marketing-brand-mark"><Sparkles size={16}/></span><span>Katalysa<span className="brand-period">.</span></span></Link><p>Making school management clearer, so school communities can focus on what matters most.</p><nav aria-label="Footer navigation"><a href="#features">Platform</a><a href="#roadmap">Upcoming features</a><a href="#faq">FAQs</a><a href="#contact">Contact</a></nav><small>© 2026 Katalysa. Designed for Nigerian schools.</small></footer>
+      <footer className="marketing-footer"><Link className="marketing-brand" href="#home"><span className="marketing-brand-mark"><Image src="/katalysa-logo.png" alt="" width={26} height={26} /></span><span>Katalysa<span className="brand-period">.</span></span></Link><p>School records, fees, academic results, and family updates in one workspace.</p><nav aria-label="Footer navigation"><a href="#features">Platform</a><a href="#faq">FAQs</a><a href="#contact">Book a demo</a></nav><small>© 2026 Katalysa. Designed for Nigerian schools.</small></footer>
     </main>
   );
 }
