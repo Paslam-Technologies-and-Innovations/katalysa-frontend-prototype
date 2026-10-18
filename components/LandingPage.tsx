@@ -28,7 +28,7 @@ const problems = [
 const pricing = [
   { name: "Starter", students: "1–49 students", year: "₦90,000", term: "₦35,000", group: "Small schools" },
   { name: "Growth", students: "50–149 students", year: "₦180,000", term: "₦65,000" },
-  { name: "Professional", students: "150–299 students", year: "₦300,000", term: "₦110,000", recommended: true },
+  { name: "Professional", students: "150–299 students", year: "₦300,000", term: "₦110,000" },
   { name: "Advanced", students: "300–500 students", year: "₦450,000", term: "₦165,000" },
   { name: "Enterprise", students: "501–800 students", year: "₦650,000", term: "₦240,000" },
   { name: "Large schools", students: "801+ students", year: "Custom pricing", term: "Based on size and requirements" },
@@ -121,8 +121,8 @@ export default function LandingPage({ onLogin, onGetStarted }: { onLogin: () => 
 
       <section className="marketing-pricing marketing-section" id="pricing">
         <div className="marketing-section-heading"><span className="marketing-eyebrow">STRAIGHTFORWARD SCHOOL PRICING</span><h2>Choose a plan that fits <em>your school.</em></h2><p>Annual and per-term options, organised by student enrolment.</p></div>
-        <div className="pricing-grid">{pricing.map((plan,index)=><article className={`pricing-card${plan.recommended?" pricing-recommended":""}`} key={plan.name}>
-          <div className="pricing-card-top"><span className="pricing-tier-label">{plan.group ?? (index===5 ? "For larger school communities" : "School plan")}</span>{plan.recommended&&<span className="pricing-badge">Recommended</span>}</div>
+        <div className="pricing-grid">{pricing.map((plan,index)=><article className="pricing-card" key={plan.name}>
+          <div className="pricing-card-top"><span className="pricing-tier-label">{plan.group ?? (index===5 ? "For larger school communities" : "School plan")}</span></div>
           <h3 className="pricing-name">{plan.name}</h3><p className="pricing-students">{plan.students}</p>
           <div className="pricing-amount"><strong>{plan.year}</strong><span>{plan.year==="Custom pricing"?"":"per year"}</span></div>
           <div className="pricing-term"><span>Or pay per term</span><strong>{plan.term}</strong></div>

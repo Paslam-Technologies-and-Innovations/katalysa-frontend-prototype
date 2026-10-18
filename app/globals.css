@@ -207,3 +207,24 @@
 .pricing-plan-note{min-height:27px;margin:9px 0 10px;font-size:8px;line-height:1.45}
 .pricing-link{padding-top:9px;font-size:8px}
 @media(max-width:760px){.pricing-card{flex-basis:190px;min-height:250px;padding:14px 12px}.pricing-amount strong{font-size:22px}.pricing-term{align-items:flex-start;flex-direction:column}}
+
+/* Navy section backgrounds requested for pricing and the school workspace. */
+.marketing-pricing{max-width:none;width:100%;padding-left:max(5vw,24px);padding-right:max(5vw,24px);background:#00022E}
+.marketing-pricing .marketing-section-heading .marketing-eyebrow{color:#c4c2ff}
+.marketing-pricing .marketing-section-heading h2{color:#fff}
+.marketing-pricing .marketing-section-heading h2 em{color:#c4c2ff}
+.marketing-pricing .marketing-section-heading>p,.marketing-pricing .pricing-note{color:#c6c8da}
+.pricing-recommended{border:1px solid #e5e7ef;box-shadow:0 10px 28px #00022e08}
+.features-dashboard{background:#00022E;border-color:#00022E}
+.features-dashboard-head{background:#00022E;border-bottom-color:#ffffff24;color:#fff}
+.features-dashboard-head>span{color:#c6c8da}
+.features-dashboard-body{background:#00022E}
+.features-module-nav{background:#10133b;border-right-color:#ffffff24}
+.features-module-nav>strong{color:#b3b6cd}
+.features-module-nav>span{color:#d6d8e7}
+.features-module-nav>span svg{color:#c4c2ff}
+.features-module-nav>span.is-current{background:#ffffff18;color:#fff}
+.features-module-nav>span.is-current svg{color:#d3d1ff}
+.features-dashboard-foot{background:#00022E;border-top-color:#ffffff24}
+.features-dashboard-foot span{color:#d6d8e7}
+.features-dashboard-foot svg{color:#8dd3ac}
