@@ -116,13 +116,26 @@ export default function LandingPage({ onLogin, onGetStarted }: { onLogin: () => 
 
       <section className="marketing-pricing marketing-section" id="pricing">
         <div className="marketing-section-heading"><span className="marketing-eyebrow">STRAIGHTFORWARD SCHOOL PRICING</span><h2>Choose a plan that fits <em>your school.</em></h2><p>Annual and per-term options, organised by student enrolment.</p></div>
-        <div className="pricing-grid">{pricing.map(plan=><article className={`pricing-card${plan.recommended?" pricing-recommended":""}`} key={plan.name}>{plan.recommended&&<span className="pricing-badge">Recommended</span>}<p className="pricing-name">{plan.name}</p>{plan.group&&<span className="pricing-group">{plan.group}</span>}<p className="pricing-students">{plan.students}</p><div className="pricing-amount"><strong>{plan.year}</strong><span>{plan.year==="Custom pricing"?"":"/ year"}</span></div><div className="pricing-term"><span>Per term</span><strong>{plan.term}</strong></div><a className="pricing-link" href="#contact">{plan.year==="Custom pricing"?"Discuss your school":"Ask about this plan"}<ArrowRight size={14}/></a></article>)}</div>
+        <div className="pricing-grid">{pricing.map((plan,index)=><article className={`pricing-card${plan.recommended?" pricing-recommended":""}`} key={plan.name}>
+          <div className="pricing-card-top"><span className="pricing-tier-label">{plan.group ?? (index===5 ? "For larger school communities" : "School plan")}</span>{plan.recommended&&<span className="pricing-badge">Recommended</span>}</div>
+          <h3 className="pricing-name">{plan.name}</h3><p className="pricing-students">{plan.students}</p>
+          <div className="pricing-amount"><strong>{plan.year}</strong><span>{plan.year==="Custom pricing"?"":"per year"}</span></div>
+          <div className="pricing-term"><span>Or pay per term</span><strong>{plan.term}</strong></div>
+          <p className="pricing-plan-note">{plan.year==="Custom pricing"?"Pricing tailored to your school’s size and requirements.":"Choose the billing schedule that works for your school."}</p>
+          <a className="pricing-link" href="#contact">{plan.year==="Custom pricing"?"Discuss your school":"Talk about this plan"}<ArrowRight size={15}/></a>
+        </article>)}</div>
         <small className="pricing-note">Pricing shown as supplied by Katalysa. Confirm final plan details with the school before purchase.</small>
       </section>
 
       <section className="marketing-section marketing-features" id="features">
-        <div className="marketing-section-heading"><span className="marketing-eyebrow">KATALYSA FEATURES</span><h2>School essentials,<br /><em>in one place.</em></h2><p>Give your school team a shared view of the records, payments, academics, and family updates they manage.</p></div>
-        <div className="product-area-grid">{productAreas.map(({ icon: Icon, title, detail }, index) => <article className="product-area-card" key={title}><span className={`product-area-icon tone-${index % 4}`}><Icon size={20}/></span><span className="product-area-index">0{index + 1}</span><h3>{title}</h3><p>{detail}</p><ArrowUpRight className="product-area-arrow" size={17}/></article>)}</div>
+        <div className="features-intro"><div className="marketing-section-heading"><span className="marketing-eyebrow">THE KATALYSA WORKSPACE</span><h2>Everything your school team needs, <em>clearly organised.</em></h2><p>Explore the tools available today for the people, learning, finances, and family communication that keep a school moving.</p></div><div className="features-summary"><span className="features-summary-icon"><ChartNoAxesCombined size={20}/></span><strong>One connected workspace</strong><small>Designed for everyday school operations</small></div></div>
+        <div className="features-dashboard">
+          <div className="features-dashboard-head"><div><span className="features-live-dot"/> KATALYSA SCHOOL WORKSPACE</div><span>Current product areas</span></div>
+          <div className="features-dashboard-body"><aside className="features-module-nav"><strong>Workspace</strong><span className="is-current"><Users size={15}/> People</span><span><Wallet size={15}/> Finance</span><span><GraduationCap size={15}/> Academics</span><span><MessageSquareText size={15}/> Community</span></aside>
+            <div className="features-module-grid">{productAreas.map(({icon:Icon,title,detail},index)=><article className="feature-module" key={title}><span className={`product-area-icon tone-${index%4}`}><Icon size={19}/></span><span className="feature-module-tag">{["PEOPLE","FINANCE","ACADEMICS","STAFF","COMMUNITY","ADMINISTRATION"][index]}</span><h3>{title}</h3><p>{detail}</p><span className="feature-module-link">Explore in the prototype <ArrowUpRight size={14}/></span></article>)}</div>
+          </div>
+          <div className="features-dashboard-foot"><span><Check size={14}/> Student and staff records</span><span><Check size={14}/> Fees and academic workflows</span><span><Check size={14}/> Parent access and announcements</span></div>
+        </div>
       </section>
 
       <section className="marketing-problems marketing-section" id="problems">
