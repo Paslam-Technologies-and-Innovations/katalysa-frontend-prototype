@@ -75,6 +75,7 @@ export default function LandingPage({ onLogin, onGetStarted }: { onLogin: () => 
         </nav>
         <div className="marketing-header-actions">
           <button className="marketing-login" onClick={onLogin}>Sign in</button>
+          <a className="button button-outline marketing-book" href="#contact">Book a demo <ArrowRight size={14} /></a>
           <button className="button button-primary marketing-get-started" onClick={onGetStarted}>Get started <ArrowRight size={16} /></button>
         </div>
       </header>
@@ -86,7 +87,8 @@ export default function LandingPage({ onLogin, onGetStarted }: { onLogin: () => 
           <p>Bring student records, school fees, results, and family updates into one connected workspace, designed around the way Nigerian schools work.</p>
           <div className="marketing-hero-actions">
             <button className="button button-primary" onClick={onGetStarted}>Get started <ArrowRight size={16} /></button>
-          <a className="marketing-text-cta" href="#features">Explore features <ArrowDown size={15} /></a>
+            <a className="button button-outline marketing-hero-demo" href="#contact">Book a demo <ArrowRight size={15} /></a>
+            <a className="marketing-text-cta" href="#features">Explore features <ArrowDown size={15} /></a>
           </div>
           <div className="marketing-trust-row"><span className="trust-avatars"><i>A</i><i>T</i><i>S</i></span><span>For school teams, teachers, and families</span></div>
         </div>
