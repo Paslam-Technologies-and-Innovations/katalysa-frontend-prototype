@@ -235,6 +235,8 @@
 .marketing-pricing .marketing-section-heading h2{color:#00022E}
 .marketing-pricing .marketing-section-heading h2 em{color:#6560c7}
 .marketing-pricing .marketing-section-heading>p,.marketing-pricing .pricing-note{color:#81849b}
+.pricing-page .marketing-section-heading h1{font-size:clamp(34px,4vw,49px);line-height:1.12;letter-spacing:-.065em;margin:14px 0;color:#00022E}
+.pricing-page .marketing-section-heading h1 em{color:#6560c7;font-style:normal}
 .pricing-card{background:#00022E;border-color:#00022E;box-shadow:0 12px 28px #00022e18}
 .pricing-card:hover{background:#00022E;border-color:#292c5c}
 .pricing-tier-label,.pricing-students,.pricing-amount span{color:#c7c9dc}

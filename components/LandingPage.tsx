@@ -25,15 +25,6 @@ const problems = [
   { icon: MessageSquareText, title: "School updates get missed", detail: "Publish announcements for parents and give families a place to view school information." },
 ];
 
-const pricing = [
-  { name: "Starter", students: "1–49 students", year: "₦90,000", term: "₦35,000", group: "Small schools" },
-  { name: "Growth", students: "50–149 students", year: "₦180,000", term: "₦65,000" },
-  { name: "Professional", students: "150–299 students", year: "₦300,000", term: "₦110,000" },
-  { name: "Advanced", students: "300–500 students", year: "₦450,000", term: "₦165,000" },
-  { name: "Enterprise", students: "501–800 students", year: "₦650,000", term: "₦240,000" },
-  { name: "Large schools", students: "801+ students", year: "Custom pricing", term: "Based on size and requirements" },
-];
-
 const faqs = [
   { question: "What is Katalysa?", answer: "Katalysa is a school-management platform for private schools in Nigeria, with tools for student records, fees, results, staff, classes, and parent access." },
   { question: "Who is Katalysa for?", answer: "School administrators and staff manage school operations. Parents use accounts created or authorized by their school to access their children's information." },
@@ -67,7 +58,7 @@ export default function LandingPage({ onLogin, onGetStarted }: { onLogin: () => 
         <nav className={`marketing-nav${menuOpen ? " marketing-nav-open" : ""}`} aria-label="Main navigation">
           <a href="#home" onClick={closeMenu}>Home</a>
           <a href="#features" onClick={closeMenu}>Features</a>
-          <a href="#pricing" onClick={closeMenu}>Pricing</a>
+          <Link href="/pricing" onClick={closeMenu}>Pricing</Link>
           <a href="#how-it-works" onClick={closeMenu}>How it works</a>
           <a href="#about" onClick={closeMenu}>About</a>
           <a href="#faq" onClick={closeMenu}>FAQs</a>
@@ -117,19 +108,6 @@ export default function LandingPage({ onLogin, onGetStarted }: { onLogin: () => 
 
       <section className="marketing-proof-strip" aria-label="Katalysa platform highlights">
         <span>LESS ADMIN OVERLOAD</span><i/><span>CLEARER SCHOOL RECORDS</span><i/><span>BETTER FAMILY CONNECTIONS</span><i/><span>BUILT FOR NIGERIA</span>
-      </section>
-
-      <section className="marketing-pricing marketing-section" id="pricing">
-        <div className="marketing-section-heading"><span className="marketing-eyebrow">STRAIGHTFORWARD SCHOOL PRICING</span><h2>Choose a plan that fits <em>your school.</em></h2><p>Annual and per-term options, organised by student enrolment.</p></div>
-        <div className="pricing-grid">{pricing.map((plan,index)=><article className="pricing-card" key={plan.name}>
-          <div className="pricing-card-top"><span className="pricing-tier-label">{plan.group ?? (index===5 ? "For larger school communities" : "School plan")}</span></div>
-          <h3 className="pricing-name">{plan.name}</h3><p className="pricing-students">{plan.students}</p>
-          <div className="pricing-amount"><strong>{plan.year}</strong><span>{plan.year==="Custom pricing"?"":"per year"}</span></div>
-          <div className="pricing-term"><span>Or pay per term</span><strong>{plan.term}</strong></div>
-          <p className="pricing-plan-note">{plan.year==="Custom pricing"?"Pricing tailored to your school’s size and requirements.":"Choose the billing schedule that works for your school."}</p>
-          <a className="pricing-link" href="#contact">{plan.year==="Custom pricing"?"Discuss your school":"Talk about this plan"}<ArrowRight size={15}/></a>
-        </article>)}</div>
-        <small className="pricing-note">Pricing shown as supplied by Katalysa. Confirm final plan details with the school before purchase.</small>
       </section>
 
       <section className="marketing-section marketing-features" id="features">
