@@ -17,6 +17,8 @@ import {
   type ClassGroup, type Student, type StudentStatus, type Teacher, type TeacherStatus,
 } from "@/lib/demo-data";
 import { mockApi } from "@/lib/mock-api";
+import LandingPage from "@/components/LandingPage";
+import RoadmapContent from "@/components/RoadmapContent";
 
 const navy = "#00022E";
 const classes = ["JSS 1A", "JSS 2B", "SS 2B", "SS 3A"];
@@ -180,6 +182,8 @@ export default function KatalysaApp() {
 
   if (!sessionReady) return <main className="loading"><span className="spinner" /> Loading Katalysa demo…</main>;
   if (role && roleSegment === "change-password") return <ChangePasswordScreen onComplete={async()=>{await mockApi.changePassword();notify("Password changed in demo");router.push(roleHome(role));}}/>;
+  if (roleSegment === "login") return <LoginScreen onLogin={signIn} onRegister={()=>router.push("/register")} />;
+  if (!roleSegment) return <LandingPage onLogin={()=>router.push("/login")} onDashboard={role?()=>go(roleHome(role)):undefined}/>;
   if (!role || (roleSegment === "register" && !role)) {
     if (roleSegment === "register") return <RegisterScreen schoolName={schoolName} setSchoolName={setSchoolName} onRegister={async name=>{await mockApi.registerSchool(name,"Amara Okafor");setRole("admin");setUserName("Amara Okafor");router.push("/admin/school-setup");notify("School registered in demo", "No account or school tenant was created in the backend.");}} />;
     if (roleSegment === "change-password") return <ChangePasswordScreen onComplete={async()=>{await mockApi.changePassword();notify("Password changed in demo");router.push("/");}} />;
@@ -226,6 +230,7 @@ export default function KatalysaApp() {
         case "parents": return <ParentsScreen students={students} onUpdate={student=>{setSelectedStudent(student);setModal("student-detail");}}/>;
         case "settings": return <SchoolSettings gates={schoolGates} setGates={setSchoolGates} smsEnabled={smsEnabled} setSmsEnabled={setSmsEnabled} onEdit={()=>setModal("edit-school")} onSave={()=>{setProfileSaved(true);notify("Settings saved", "Settings are local to this prototype.");}} saved={profileSaved}/>;
         case "subscription": return <SubscriptionScreen onChoose={plan=>notify(`${plan} plan selected`, "No subscription or payment is changed in demo mode.")}/>;
+        case "upcoming-features": return <><PageTitle eyebrow="KATALYSA ROADMAP" title="Upcoming features" description="A look at what the Katalysa team is planning next."/><RoadmapContent/></>;
         default: return <NotFound onHome={()=>go("/admin")}/>;
       }
     }
@@ -246,15 +251,15 @@ export default function KatalysaApp() {
   };
 
   return <div className={`app-frame ${role}-frame`}>
-    <div className="demo-ribbon"><span className="pulse-dot"/>PROTOTYPE MODE <span className="ribbon-line"/>All data and actions are simulated</div>
     {role === "admin" && <aside className={`sidebar ${mobileNav?"sidebar-open":""}`}>
       <Link className="brand" href="/admin"><span className="brand-mark"><Sparkles size={16}/></span><span>Katalysa<span className="brand-period">.</span></span></Link>
       <button className="school-switch" onClick={()=>setModal("edit-school")}><span className="school-monogram">B</span><span className="school-meta"><strong>{schoolName}</strong><small>School administrator</small></span><ChevronDown size={15}/></button>
       <div className="nav-caption">WORKSPACE</div><nav className="side-nav">{adminNavigation.slice(0,5).map(item=><NavItem key={item.path} item={item} active={screen===item.path} onClick={()=>go(`/admin${item.path?`/${item.path}`:""}`)}/>)}</nav>
       <div className="nav-caption gap-top">ACADEMICS</div><nav className="side-nav">{adminNavigation.slice(5,8).map(item=><NavItem key={item.path} item={item} active={screen===item.path} onClick={()=>go(`/admin/${item.path}`)}/>)}</nav>
       <div className="nav-caption gap-top">SCHOOL COMMUNITY</div><nav className="side-nav">{adminNavigation.slice(8,10).map(item=><NavItem key={item.path} item={item} active={screen===item.path} onClick={()=>go(`/admin/${item.path}`)}/>)}</nav>
+      <div className="nav-caption gap-top">WHAT’S NEXT</div><nav className="side-nav">{adminNavigation.slice(12).map(item=><NavItem key={item.path} item={item} active={screen===item.path} onClick={()=>go(`/admin/${item.path}`)}/>)}</nav>
       <div className="side-spacer"/><div className="setup-mini" onClick={()=>go("/admin/school-setup")} role="button" tabIndex={0}><div className="setup-mini-head"><span><ShieldCheck size={15}/>School setup</span><strong>{setupDone.filter(Boolean).length}/7</strong></div><div className="meter"><span style={{width:`${setupDone.filter(Boolean).length/7*100}%`}}/></div><small>Finish the essentials to get started</small></div>
-      <nav className="side-nav foot-nav">{adminNavigation.slice(10).map(item=><NavItem key={item.path} item={item} active={screen===item.path} onClick={()=>go(`/admin/${item.path}`)}/>)}</nav>
+      <nav className="side-nav foot-nav">{adminNavigation.slice(10,12).map(item=><NavItem key={item.path} item={item} active={screen===item.path} onClick={()=>go(`/admin/${item.path}`)}/>)}</nav>
       <UserMenu name={userName} role="School administrator" onProfile={()=>setModal("profile")} onLogout={signOut}/>
     </aside>}
     <div className="main-column">
@@ -276,7 +281,7 @@ export default function KatalysaApp() {
   </div>;
 }
 
-const adminLabels:Record<string,string>={home:"Overview","school-setup":"School setup",students:"Students",teachers:"Teachers",classes:"Classes & terms",fees:"Fees & payments",results:"Results",transcripts:"Transcripts",announcements:"Announcements",parents:"Parents",settings:"School settings",subscription:"Subscription"};
+const adminLabels:Record<string,string>={home:"Overview","school-setup":"School setup",students:"Students",teachers:"Teachers",classes:"Classes & terms",fees:"Fees & payments",results:"Results",transcripts:"Transcripts",announcements:"Announcements",parents:"Parents",settings:"School settings",subscription:"Subscription","upcoming-features":"Upcoming features"};
 const teacherLabels:Record<string,string>={home:"Home",classes:"My classes","score-entry":"Score entry",announcements:"Announcements"};
 const parentLabels:Record<string,string>={home:"Home",results:"Results",fees:"Fees",announcements:"Announcements",transcript:"Transcript",profile:"My profile"};
 const adminNavigation=[
@@ -292,6 +297,7 @@ const adminNavigation=[
   {label:"Parents",path:"parents",icon:<UserRound size={17}/>},
   {label:"School settings",path:"settings",icon:<Settings size={17}/>},
   {label:"Subscription",path:"subscription",icon:<CreditCard size={17}/>},
+  {label:"Upcoming features",path:"upcoming-features",icon:<Sparkles size={17}/>},
 ];
 const parentNavigation=[
   {label:"Home",path:"",icon:<Home size={19}/>},
