@@ -68,6 +68,9 @@ export default function LandingPage({ onLogin, onGetStarted }: { onLogin: () => 
           <a href="#home" onClick={closeMenu}>Home</a>
           <a href="#features" onClick={closeMenu}>Features</a>
           <a href="#pricing" onClick={closeMenu}>Pricing</a>
+          <a href="#how-it-works" onClick={closeMenu}>How it works</a>
+          <a href="#about" onClick={closeMenu}>About</a>
+          <a href="#faq" onClick={closeMenu}>FAQs</a>
           <a href="#contact" onClick={closeMenu}>Contact</a>
         </nav>
         <div className="marketing-header-actions">

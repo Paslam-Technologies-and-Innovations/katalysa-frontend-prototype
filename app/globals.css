@@ -142,3 +142,36 @@
 @media(max-width:1000px){.pricing-grid{grid-template-columns:repeat(2,minmax(0,1fr));max-width:800px}.features-module-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:760px){.marketing-pricing{padding-top:72px;padding-bottom:72px}.pricing-grid{gap:12px;margin-top:30px}.pricing-card{min-height:330px;padding:19px 17px}.pricing-name{font-size:18px}.pricing-amount{margin-top:20px}.pricing-amount strong{font-size:27px}.features-intro{display:grid;gap:20px}.features-summary{max-width:300px}.features-dashboard-body{grid-template-columns:1fr}.features-module-nav{flex-direction:row;overflow-x:auto;border-right:0;border-bottom:1px solid #eceef3;padding:10px}.features-module-nav>strong{display:none}.features-module-nav>span{flex:none;padding:9px}.features-module-grid{padding:12px}}
 @media(max-width:520px){.pricing-grid{grid-template-columns:1fr}.pricing-card{min-height:0;padding:20px}.pricing-amount strong{font-size:31px}.pricing-plan-note{min-height:0}.features-dashboard-head{align-items:flex-start;flex-direction:column;justify-content:center;padding:12px 14px;gap:5px}.features-module-grid{grid-template-columns:1fr}.feature-module{min-height:0}.feature-module p{min-height:0}.features-dashboard-foot{display:grid;grid-template-columns:1fr;padding:12px 14px}}
+
+/* Fix missing problem-section layout and keep all six plans in one desktop row. */
+.marketing-problems{max-width:none;padding-left:max(5vw,24px);padding-right:max(5vw,24px);background:#f7f8fb}
+.marketing-problems>.marketing-section-heading,.marketing-problems>.problems-grid{width:min(100%,1150px);margin-left:auto;margin-right:auto}
+.marketing-problems .marketing-section-heading h2{color:#00022E}
+.problems-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:15px;margin-top:34px}
+.problem-card{position:relative;min-height:210px;padding:22px 19px;border:1px solid #e6e8ef;border-radius:14px;background:#fff;box-shadow:0 10px 26px #00022e08;transition:transform .18s,border-color .18s,box-shadow .18s}
+.problem-card:hover{transform:translateY(-3px);border-color:#d2d2e8;box-shadow:0 16px 32px #00022e10}
+.problem-number{position:absolute;top:20px;right:19px;color:#b2b4c4;font-size:9px;font-weight:750;letter-spacing:.1em}
+.problem-icon{display:grid;place-items:center;width:39px;height:39px;border-radius:11px;background:#eeedfc;color:#514da3}
+.problem-card:nth-child(2) .problem-icon{background:#eaf5ef;color:#36835a}.problem-card:nth-child(3) .problem-icon{background:#fff1e5;color:#aa6b2c}.problem-card:nth-child(4) .problem-icon{background:#edf3ff;color:#5374a5}
+.problem-card h3{max-width:220px;margin:19px 0 8px;color:#00022E;font-size:14px;line-height:1.4;letter-spacing:-.025em}
+.problem-card p{margin:0;color:#777c8f;font-size:10px;line-height:1.7}
+.pricing-grid{grid-template-columns:repeat(6,minmax(0,1fr));gap:11px;margin-top:36px;max-width:none;width:100%}
+.pricing-card{min-width:0;min-height:330px;padding:18px 14px 16px;border-radius:13px}
+.pricing-card-top{align-items:flex-start;min-height:34px;gap:5px}
+.pricing-tier-label{font-size:8px;line-height:1.4}
+.pricing-badge{padding:5px 6px;font-size:6px}
+.pricing-name{font-size:16px;margin-top:12px}
+.pricing-students{font-size:9px;line-height:1.5}
+.pricing-amount{display:grid;gap:4px;margin:22px 0 13px}
+.pricing-amount strong{font-size:clamp(19px,1.75vw,25px);letter-spacing:-.055em;white-space:nowrap}
+.pricing-amount span{font-size:9px}
+.pricing-term{align-items:flex-start;flex-direction:column;gap:5px;padding:10px;font-size:8px}
+.pricing-term strong{font-size:11px}
+.pricing-plan-note{font-size:8px;line-height:1.5;min-height:36px}
+.pricing-link{font-size:8px;line-height:1.3}
+.marketing-nav{gap:clamp(9px,1.35vw,19px)}
+.marketing-nav a{color:#00022E;font-size:11px;white-space:nowrap}
+@media(max-width:1200px){.pricing-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:13px}.pricing-card{min-height:315px;padding:19px}.pricing-name{font-size:18px}.pricing-amount{display:flex;align-items:baseline}.pricing-amount strong{font-size:clamp(24px,3vw,31px)}.pricing-term{align-items:center;flex-direction:row;font-size:9px}.pricing-term strong{font-size:12px}.pricing-plan-note{font-size:9px;min-height:30px}.pricing-link{font-size:9px}.marketing-header{gap:14px}.marketing-nav{gap:10px}.marketing-nav a{font-size:10px}}
+@media(max-width:1000px){.problems-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.problem-card{min-height:180px}}
+@media(max-width:760px){.pricing-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:11px}.pricing-card{min-height:290px;padding:17px}.pricing-amount{display:grid;gap:4px}.pricing-amount strong{font-size:clamp(23px,5vw,29px)}.pricing-term{align-items:flex-start;flex-direction:column;gap:5px}.pricing-term strong{font-size:11px}.marketing-problems{padding-left:24px;padding-right:24px}.problems-grid{gap:10px;margin-top:24px}.problem-card{min-height:170px;padding:17px}.problem-card h3{font-size:12px;margin-top:14px}.problem-card p{font-size:9px}.marketing-nav a{white-space:normal}}
+@media(max-width:520px){.pricing-grid{grid-template-columns:1fr}.pricing-card{min-height:0;padding:19px}.pricing-card-top{min-height:25px}.pricing-name{font-size:19px}.pricing-amount{display:flex;align-items:baseline}.pricing-amount strong{font-size:29px}.pricing-term{align-items:center;flex-direction:row}.pricing-plan-note{min-height:0}.pricing-link{font-size:10px}.problems-grid{grid-template-columns:1fr}.problem-card{min-height:0;padding:19px}.problem-card h3{font-size:13px}.problem-card p{font-size:10px}.marketing-problems{padding-left:18px;padding-right:18px}}
