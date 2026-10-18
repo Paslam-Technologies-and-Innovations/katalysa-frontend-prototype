@@ -6,7 +6,7 @@ import { useState, type FormEvent } from "react";
 import {
   ArrowDown, ArrowRight, ArrowUpRight, BookOpen, Check, ChevronDown,
   ClipboardCheck, GraduationCap, Menu, MessageSquareText, Sparkles,
-  Users, Wallet, X,
+  Users, Wallet, X, Files, CircleDollarSign, ChartNoAxesCombined,
 } from "lucide-react";
 
 const productAreas = [
@@ -18,10 +18,28 @@ const productAreas = [
   { icon: BookOpen, title: "School administration", detail: "Bring classes, academic terms, subjects, and school settings together." },
 ];
 
+const problems = [
+  { icon: Files, title: "Student details spread across files", detail: "Keep student profiles, class placement, and guardian information together in an organised directory." },
+  { icon: CircleDollarSign, title: "Fee balances are hard to follow", detail: "Record payments against school fees and review what has been paid or remains outstanding." },
+  { icon: ChartNoAxesCombined, title: "Results take too long to prepare", detail: "Enter scores, calculate results, and prepare report cards from the academic workspace." },
+  { icon: MessageSquareText, title: "School updates get missed", detail: "Publish announcements for parents and give families a place to view school information." },
+];
+
+const pricing = [
+  { name: "Starter", students: "1–49 students", year: "₦90,000", term: "₦35,000", group: "Small schools" },
+  { name: "Growth", students: "50–149 students", year: "₦180,000", term: "₦65,000" },
+  { name: "Professional", students: "150–299 students", year: "₦300,000", term: "₦110,000", recommended: true },
+  { name: "Advanced", students: "300–500 students", year: "₦450,000", term: "₦165,000" },
+  { name: "Enterprise", students: "501–800 students", year: "₦650,000", term: "₦240,000" },
+  { name: "Large schools", students: "801+ students", year: "Custom pricing", term: "Based on size and requirements" },
+];
+
 const faqs = [
-  { question: "What is Katalysa?", answer: "Katalysa is a school-management platform being designed to bring student records, fees, academic results, and parent communication into one clearer workspace." },
-  { question: "Who is Katalysa for?", answer: "Private schools in Nigeria, including school owners, administrators, teachers, and parents." },
-  { question: "Can I book a demonstration?", answer: "Yes. Share your school details and choose a convenient date and time. This prototype records the request only in the current page; it does not send it to Katalysa." },
+  { question: "What is Katalysa?", answer: "Katalysa is a school-management platform for private schools in Nigeria, with tools for student records, fees, results, staff, classes, and parent access." },
+  { question: "Who is Katalysa for?", answer: "School administrators and staff manage school operations. Parents use accounts created or authorized by their school to access their children's information." },
+  { question: "Can parents create their own accounts?", answer: "No. A school creates or authorizes parent access and connects each parent account to the relevant children." },
+  { question: "Can I book a demonstration?", answer: "Yes. Share your school details and choose a convenient date and time. This prototype does not send or store the request." },
+  { question: "How is pricing determined?", answer: "Plans are based on student enrolment. The pricing section shows annual and per-term rates; schools above 800 students can request custom pricing." },
   { question: "What can my school manage with Katalysa?", answer: "The current prototype includes student and teacher records, classes and terms, fees, results and report cards, announcements, parent access, school settings, and subscription details." },
 ];
 
@@ -47,15 +65,14 @@ export default function LandingPage({ onLogin, onGetStarted }: { onLogin: () => 
           {menuOpen ? <X size={21} /> : <Menu size={21} />}
         </button>
         <nav className={`marketing-nav${menuOpen ? " marketing-nav-open" : ""}`} aria-label="Main navigation">
-          <a href="#features" onClick={closeMenu}>Platform</a>
-          <a href="#how-it-works" onClick={closeMenu}>Why Katalysa</a>
-          <a href="#faq" onClick={closeMenu}>FAQs</a>
-          <a className="marketing-contact-link" href="#contact" onClick={closeMenu}>Contact</a>
+          <a href="#home" onClick={closeMenu}>Home</a>
+          <a href="#features" onClick={closeMenu}>Features</a>
+          <a href="#pricing" onClick={closeMenu}>Pricing</a>
+          <a href="#contact" onClick={closeMenu}>Contact</a>
         </nav>
         <div className="marketing-header-actions">
           <button className="marketing-login" onClick={onLogin}>Sign in</button>
-          <a className="button button-outline marketing-book" href="#contact">Book a demo</a>
-          <button className="button button-primary marketing-book" onClick={onGetStarted}>Get started <ArrowRight size={16} /></button>
+          <button className="button button-primary marketing-get-started" onClick={onGetStarted}>Get started <ArrowRight size={16} /></button>
         </div>
       </header>
 
@@ -66,14 +83,14 @@ export default function LandingPage({ onLogin, onGetStarted }: { onLogin: () => 
           <p>Bring student records, school fees, results, and family updates into one connected workspace, designed around the way Nigerian schools work.</p>
           <div className="marketing-hero-actions">
             <button className="button button-primary" onClick={onGetStarted}>Get started <ArrowRight size={16} /></button>
-            <a className="marketing-text-cta" href="#features">Explore the platform <ArrowDown size={15} /></a>
+          <a className="marketing-text-cta" href="#features">Explore features <ArrowDown size={15} /></a>
           </div>
           <div className="marketing-trust-row"><span className="trust-avatars"><i>A</i><i>T</i><i>S</i></span><span>For school teams, teachers, and families</span></div>
         </div>
         <div className="marketing-visual" aria-label="Illustration of a school dashboard">
           <div className="hero-orbit hero-orbit-one" /><div className="hero-orbit hero-orbit-two" />
           <div className="hero-dashboard">
-            <div className="hero-dash-sidebar"><span className="hero-dash-logo"><Sparkles size={15}/></span><span className="hero-dash-active"/><i/><i/><i/><i/><i/></div>
+            <div className="hero-dash-sidebar"><span className="hero-dash-logo"><Image src="/katalysa-logo.png" alt="" width={19} height={19}/></span><span className="hero-dash-active"/><i/><i/><i/><i/><i/></div>
             <div className="hero-dash-main">
               <div className="hero-dash-top"><span>Bloomfield Academy <b>›</b> Overview</span><span className="hero-dash-avatar">AO</span></div>
               <div className="hero-dash-greeting"><small>YOUR SCHOOL AT A GLANCE</small><strong>Good morning, Amara <span>✦</span></strong><span>A little more clarity for the day ahead.</span></div>
@@ -97,9 +114,20 @@ export default function LandingPage({ onLogin, onGetStarted }: { onLogin: () => 
         <span>LESS ADMIN OVERLOAD</span><i/><span>CLEARER SCHOOL RECORDS</span><i/><span>BETTER FAMILY CONNECTIONS</span><i/><span>BUILT FOR NIGERIA</span>
       </section>
 
+      <section className="marketing-pricing marketing-section" id="pricing">
+        <div className="marketing-section-heading"><span className="marketing-eyebrow">STRAIGHTFORWARD SCHOOL PRICING</span><h2>Choose a plan that fits <em>your school.</em></h2><p>Annual and per-term options, organised by student enrolment.</p></div>
+        <div className="pricing-grid">{pricing.map(plan=><article className={`pricing-card${plan.recommended?" pricing-recommended":""}`} key={plan.name}>{plan.recommended&&<span className="pricing-badge">Recommended</span>}<p className="pricing-name">{plan.name}</p>{plan.group&&<span className="pricing-group">{plan.group}</span>}<p className="pricing-students">{plan.students}</p><div className="pricing-amount"><strong>{plan.year}</strong><span>{plan.year==="Custom pricing"?"":"/ year"}</span></div><div className="pricing-term"><span>Per term</span><strong>{plan.term}</strong></div><a className="pricing-link" href="#contact">{plan.year==="Custom pricing"?"Discuss your school":"Ask about this plan"}<ArrowRight size={14}/></a></article>)}</div>
+        <small className="pricing-note">Pricing shown as supplied by Katalysa. Confirm final plan details with the school before purchase.</small>
+      </section>
+
       <section className="marketing-section marketing-features" id="features">
-        <div className="marketing-section-heading"><span className="marketing-eyebrow">ONE CONNECTED SCHOOL</span><h2>Everything important,<br /><em>in one place.</em></h2><p>Spend less time moving between lists, messages, and spreadsheets. Give your school team a shared view of the work that matters.</p></div>
+        <div className="marketing-section-heading"><span className="marketing-eyebrow">KATALYSA FEATURES</span><h2>School essentials,<br /><em>in one place.</em></h2><p>Give your school team a shared view of the records, payments, academics, and family updates they manage.</p></div>
         <div className="product-area-grid">{productAreas.map(({ icon: Icon, title, detail }, index) => <article className="product-area-card" key={title}><span className={`product-area-icon tone-${index % 4}`}><Icon size={20}/></span><span className="product-area-index">0{index + 1}</span><h3>{title}</h3><p>{detail}</p><ArrowUpRight className="product-area-arrow" size={17}/></article>)}</div>
+      </section>
+
+      <section className="marketing-problems marketing-section" id="problems">
+        <div className="marketing-section-heading"><span className="marketing-eyebrow">WHAT KATALYSA HELPS SOLVE</span><h2>Less time chasing details.<br /><em>More clarity for the day.</em></h2><p>Bring common school administration tasks into one place with the tools available in Katalysa.</p></div>
+        <div className="problems-grid">{problems.map(({icon:Icon,title,detail},index)=><article className="problem-card" key={title}><span className="problem-number">0{index+1}</span><span className="problem-icon"><Icon size={19}/></span><h3>{title}</h3><p>{detail}</p></article>)}</div>
       </section>
 
       <section className="marketing-story" id="how-it-works">
