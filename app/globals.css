@@ -192,3 +192,18 @@
 .pricing-grid{grid-template-columns:repeat(6,minmax(165px,1fr));max-width:1450px;overflow-x:auto;overscroll-behavior-x:contain;scrollbar-width:thin}
 @media(max-width:760px){.problems-grid{gap:18px}.problem-card{min-height:205px}}
 @media(max-width:520px){.problems-grid{gap:14px}.problem-card{min-height:0;padding:21px}.problem-card h3{font-size:15px}.problem-card p{font-size:11px}}
+
+/* Compact, left-to-right pricing cards. Smaller screens can scroll the same row. */
+.pricing-grid{display:flex;flex-flow:row nowrap;gap:12px;max-width:1200px;overflow-x:auto;overflow-y:hidden;padding:0 2px 12px;scroll-snap-type:x proximity;overscroll-behavior-x:contain}
+.pricing-card{flex:1 0 calc((100% - 60px)/6);min-width:160px;min-height:255px;padding:15px 13px 13px;scroll-snap-align:start}
+.pricing-card-top{min-height:27px}
+.pricing-name{font-size:16px;margin:11px 0 2px}
+.pricing-students{font-size:9px}
+.pricing-amount{display:grid;gap:3px;margin:17px 0 10px}
+.pricing-amount strong{font-size:22px;white-space:nowrap}
+.pricing-amount span{font-size:8px}
+.pricing-term{padding:8px 9px;gap:4px;font-size:8px}
+.pricing-term strong{font-size:10px}
+.pricing-plan-note{min-height:27px;margin:9px 0 10px;font-size:8px;line-height:1.45}
+.pricing-link{padding-top:9px;font-size:8px}
+@media(max-width:760px){.pricing-card{flex-basis:190px;min-height:250px;padding:14px 12px}.pricing-amount strong{font-size:22px}.pricing-term{align-items:flex-start;flex-direction:column}}
