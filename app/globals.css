@@ -228,3 +228,44 @@
 .features-dashboard-foot{background:#00022E;border-top-color:#ffffff24}
 .features-dashboard-foot span{color:#d6d8e7}
 .features-dashboard-foot svg{color:#8dd3ac}
+
+/* Keep the page surfaces white; apply navy to the individual plan and feature cards. */
+.marketing-pricing{background:#fff}
+.marketing-pricing .marketing-section-heading .marketing-eyebrow{color:#6560c7}
+.marketing-pricing .marketing-section-heading h2{color:#00022E}
+.marketing-pricing .marketing-section-heading h2 em{color:#6560c7}
+.marketing-pricing .marketing-section-heading>p,.marketing-pricing .pricing-note{color:#81849b}
+.pricing-card{background:#00022E;border-color:#00022E;box-shadow:0 12px 28px #00022e18}
+.pricing-card:hover{background:#00022E;border-color:#292c5c}
+.pricing-tier-label,.pricing-students,.pricing-amount span{color:#c7c9dc}
+.pricing-name,.pricing-amount,.pricing-amount strong,.pricing-term strong{color:#fff}
+.pricing-term{background:#ffffff12;border-color:#ffffff28;color:#d4d6e5}
+.pricing-plan-note{color:#c8cada}
+.pricing-link{border-top-color:#ffffff28;color:#fff}
+.pricing-link svg{color:#c4c2ff}
+.features-dashboard{background:#fff;border-color:#e5e7ef}
+.features-dashboard-head{background:#fff;border-bottom-color:#eceef3;color:#00022E}
+.features-dashboard-head>span{color:#888c9c}
+.features-dashboard-body{background:#fff}
+.features-module-nav{background:#fafbfe;border-right-color:#eceef3}
+.features-module-nav>strong{color:#898d9d}
+.features-module-nav>span{color:#71768a}
+.features-module-nav>span svg{color:#7772c8}
+.features-module-nav>span.is-current{background:#eeedfc;color:#00022E}
+.features-module-nav>span.is-current svg{color:#605bb2}
+.feature-module{background:#00022E;border-color:#00022E}
+.feature-module:hover{background:#00022E;border-color:#292c5c;box-shadow:0 12px 26px #00022e20}
+.feature-module .product-area-icon,.feature-module .product-area-icon.tone-1,.feature-module .product-area-icon.tone-2,.feature-module .product-area-icon.tone-3{background:#ffffff18;color:#d1ceff}
+.feature-module-tag{color:#c1c3d8}
+.feature-module h3{color:#fff}
+.feature-module p{color:#d0d2e2}
+.feature-module-link{color:#c4c2ff}
+.features-dashboard-foot{background:#fcfcfe;border-top-color:#eceef3}
+.features-dashboard-foot span{color:#666b80}
+.features-dashboard-foot svg{color:#438d6b}
+
+/* Public header navigation refinement. */
+.marketing-nav{gap:clamp(20px,1.65vw,28px)}
+.marketing-nav a{color:#00022E;font-size:13px;font-weight:600;letter-spacing:.01em}
+@media(max-width:1200px){.marketing-nav{gap:14px}.marketing-nav a{font-size:11px}}
+@media(max-width:760px){.marketing-nav{gap:0}.marketing-nav a{font-size:13px}}
