@@ -286,3 +286,8 @@
 .login-card .auth-register button{font-size:10px}
 .callback-page>.auth-brand{position:absolute}
 @media(max-width:520px){.login-card{padding:21px 18px 17px}.portal-options>button{min-height:69px;padding:11px;gap:11px}.portal-options .role-avatar{width:37px;height:37px}.portal-options strong{font-size:12px}}
+
+/* The supplied navy logo needs a light surface on navy and pale page backgrounds. */
+.auth-brand .brand-logo,.brand .brand-logo{background:#fff;border-color:#d8d9e6;color:#00022E;box-shadow:0 3px 12px #00022e20}
+.auth-brand .brand-logo img,.brand .brand-logo img{filter:none;opacity:1}
+.sidebar .brand .brand-logo{background:#fff;border-color:#fff;box-shadow:0 3px 14px #00000038}
