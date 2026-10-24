@@ -52,9 +52,6 @@ export default function LandingPage({ onLogin, onGetStarted }: { onLogin: () => 
           <span className="marketing-brand-mark"><Image src="/katalysa-logo.png" alt="" width={30} height={30} /></span>
           <span>Katalysa<span className="brand-period">.</span></span>
         </Link>
-        <button className="marketing-menu-button" aria-label={menuOpen ? "Close navigation" : "Open navigation"} aria-expanded={menuOpen} onClick={() => setMenuOpen(!menuOpen)}>
-          {menuOpen ? <X size={21} /> : <Menu size={21} />}
-        </button>
         <nav className={`marketing-nav${menuOpen ? " marketing-nav-open" : ""}`} aria-label="Main navigation">
           <a href="#home" onClick={closeMenu}>Home</a>
           <a href="#features" onClick={closeMenu}>Features</a>
@@ -66,9 +63,11 @@ export default function LandingPage({ onLogin, onGetStarted }: { onLogin: () => 
         </nav>
         <div className="marketing-header-actions">
           <button className="marketing-login" onClick={onLogin}>Sign in</button>
-          <a className="button button-outline marketing-book" href="#contact">Book a demo <ArrowRight size={14} /></a>
           <button className="button button-primary marketing-get-started" onClick={onGetStarted}>Get started <ArrowRight size={16} /></button>
         </div>
+        <button className="marketing-menu-button" aria-label={menuOpen ? "Close navigation" : "Open navigation"} aria-expanded={menuOpen} onClick={() => setMenuOpen(!menuOpen)}>
+          {menuOpen ? <X size={21} /> : <Menu size={21} />}
+        </button>
       </header>
 
       <section className="marketing-hero" id="home">

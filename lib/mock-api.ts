@@ -24,6 +24,13 @@ export const mockApi = {
     }
     return { ok: true, message: "Password updated in this demo." };
   },
+  async continueWithoutPasswordChange() {
+    if (typeof window !== "undefined") {
+      const raw = window.localStorage.getItem("katalysa-demo-session");
+      if (raw) window.localStorage.setItem("katalysa-demo-session", JSON.stringify({ ...JSON.parse(raw), must_change_password: false }));
+    }
+    return { ok: true, message: "Password change postponed in this demo." };
+  },
   async createPayment(purpose: "fee" | "transcript", total: number, studentId?: number) {
     const reference = `KAT-DEMO-${Math.random().toString(16).slice(2, 10).toUpperCase()}`;
     if (typeof window !== "undefined") window.localStorage.setItem(`katalysa-demo-payment-${reference}`, JSON.stringify({ purpose, total, status: "pending", studentId }));
