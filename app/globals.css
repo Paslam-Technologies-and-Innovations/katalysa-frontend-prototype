@@ -308,6 +308,6 @@ html[data-school-font-size="medium"] .app-frame,html[data-school-font-size="medi
 /* Active academic term selector. */
 .term-selector{position:relative}.term-selector .term-pill{border:1px solid var(--line)}.term-menu{position:absolute;top:40px;right:0;z-index:15;display:grid;min-width:190px;padding:5px;border:1px solid var(--line);border-radius:8px;background:#fff;box-shadow:0 14px 28px #00022e18}.term-menu button{display:flex;align-items:center;gap:6px;min-height:34px;border:0;border-radius:5px;background:transparent;color:#5d6074;text-align:left;font-size:9px}.term-menu button:hover,.term-menu button.selected{background:#f1f1fa;color:var(--navy);font-weight:650}
 
-/* Mobile navigation closes from the faded page area or a leftward swipe. */
+/* Open the mobile navigation with a left-edge swipe; close it from the faded page area or a leftward swipe. */
 .mobile-nav-scrim{display:none}@media(max-width:820px){.mobile-nav-scrim{display:block;position:fixed;inset:0;z-index:19;border:0;background:#00022e22;opacity:0;pointer-events:none;transition:opacity .2s}.mobile-nav-scrim.is-visible{opacity:1;pointer-events:auto}.term-selector .term-menu{display:none}}
 @media(max-width:620px){.appearance-grid{grid-template-columns:1fr}.font-size-control>div{flex-wrap:wrap}html[data-school-font-size="medium"] .app-frame,html[data-school-font-size="medium"] .auth-page,html[data-school-font-size="large"] .app-frame,html[data-school-font-size="large"] .auth-page{zoom:1}}

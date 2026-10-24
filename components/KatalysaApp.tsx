@@ -271,7 +271,19 @@ export default function KatalysaApp() {
     return <NotFound onHome={()=>go("/parent")}/>;
   };
 
-  return <div className={`app-frame ${role}-frame`}>
+  return <div className={`app-frame ${role}-frame`}
+    onTouchStart={event=>{
+      event.currentTarget.dataset.swipeStartX=String(event.touches[0]?.clientX || 0);
+      event.currentTarget.dataset.swipeStartY=String(event.touches[0]?.clientY || 0);
+    }}
+    onTouchEnd={event=>{
+      if(role!=="admin" || mobileNav) return;
+      const startX=Number(event.currentTarget.dataset.swipeStartX || 0);
+      const startY=Number(event.currentTarget.dataset.swipeStartY || 0);
+      const endX=event.changedTouches[0]?.clientX || 0;
+      const endY=event.changedTouches[0]?.clientY || 0;
+      if(startX<=32 && endX-startX>60 && Math.abs(endY-startY)<70) setMobileNav(true);
+    }}>
     {role === "admin" && <button className={`mobile-nav-scrim ${mobileNav ? "is-visible" : ""}`} aria-label="Close navigation" onClick={()=>setMobileNav(false)} onTouchStart={event=>{event.currentTarget.dataset.startX=String(event.touches[0]?.clientX || 0);}} onTouchEnd={event=>{const start=Number(event.currentTarget.dataset.startX || 0);if(start-event.changedTouches[0]?.clientX>35)setMobileNav(false);}}/>}
     {role === "admin" && <aside className={`sidebar ${mobileNav?"sidebar-open":""}`}>
       <Link className="brand" href="/admin"><KatalysaLogo inverse/><span>Katalysa<span className="brand-period">.</span></span></Link>
