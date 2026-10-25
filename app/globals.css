@@ -314,3 +314,6 @@ html[data-school-font-size="medium"] .app-frame,html[data-school-font-size="medi
 
 /* Accessible password reveal controls across sign-in, reset, and registration. */
 .password-input{position:relative;display:block}.auth-form .password-input input,.registration-form .password-input input{padding-right:42px}.password-input button{position:absolute;top:50%;right:6px;transform:translateY(-50%);width:30px;height:30px;border:0;border-radius:5px;background:transparent;color:#777a90;display:grid;place-items:center}.password-input button:hover{background:#f3f3f8;color:var(--navy)}
+
+/* Pricing is compact and side-by-side on wider screens, but readable as a vertical plan list on phones. */
+@media(max-width:760px){.pricing-grid{display:grid;grid-template-columns:1fr;gap:14px;max-width:480px;overflow:visible;padding:0 0 4px}.pricing-card{min-width:0;min-height:0;width:100%;padding:20px}.pricing-card-top{min-height:25px}.pricing-amount{display:flex;align-items:baseline}.pricing-term{align-items:center;flex-direction:row}.pricing-plan-note{min-height:0}}
