@@ -321,3 +321,6 @@ html[data-school-font-size="medium"] .app-frame,html[data-school-font-size="medi
 /* The administrator sidebar is a fixed frame: only its navigation list scrolls. */
 @media(min-width:821px){.admin-frame{align-items:flex-start}.admin-frame .sidebar{position:sticky;top:0;height:100dvh;min-height:100vh;overflow:hidden}.admin-frame .sidebar-scroll{display:flex;flex:1;flex-direction:column;min-height:0;overflow-y:auto;margin:0 -8px;padding:0 8px;scrollbar-width:thin}.admin-frame .user-menu{flex:none;margin-top:13px}.admin-frame .main-column{min-height:100dvh}}
 @media(max-width:820px){.sidebar-scroll{display:flex;flex:1;flex-direction:column;min-height:0;overflow-y:auto;margin:0 -8px;padding:0 8px}.sidebar .user-menu{flex:none}}
+
+/* Paired controls for editing or removing an announcement. */
+.announcement-actions{display:flex;align-items:flex-start;gap:5px}
